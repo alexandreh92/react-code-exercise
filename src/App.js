@@ -7,9 +7,9 @@ import './App.css';
 // components however you would like.
 
 class App extends Component {
-  componentWillMount() {
-    const session = 115 // 115th congressional session
-    const chamber = 'senate' // or 'house'
+  componentDidMount() {
+    const session = 115; // 115th congressional session
+    const chamber = 'senate'; // or 'house'
 
     // sample API call
     fetch(`https://api.propublica.org/congress/v1/${session}/${chamber}/members.json`, {
@@ -17,11 +17,14 @@ class App extends Component {
         'X-API-Key': 'd0ywBucVrXRlMQhENZxRtL3O7NPgtou2mwnLARTr',
       }),
     })
-    .then((res) => res.json())
-    .then((json) => json.results[0].members)
-    .then((members) => {
-      // array of congressperson JSON objects
-    })
+      .then((res) => res.json())
+      .then((json) => json.results[0].members)
+      .then((members) => {
+        // array of congressperson JSON objects
+      })
+      .catch(() => {
+        // catch error
+      });
   }
 
   render() {
