@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.png';
 import './App.css';
 
@@ -6,8 +6,8 @@ import './App.css';
 // including creating additional folders/files and organizing your
 // components however you would like.
 
-class App extends Component {
-  componentDidMount() {
+function App(){
+  useEffect(() => {
     const session = 115; // 115th congressional session
     const chamber = 'senate'; // or 'house'
 
@@ -23,25 +23,23 @@ class App extends Component {
         // array of congressperson JSON objects
       })
       .catch(() => {
-        // catch error
+        // catch errors
       });
-  }
+  })
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">React Programming Exercise</h1>
-        </header>
-        <section className="container">
-          {/*
-            Your app should render this part of the page.
-          */}
-        </section>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">React Programming Exercise</h1>
+      </header>
+      <section className="container">
+        {/*
+           Your app should render this part of the page.
+         */}
+      </section>
+    </div>
+  );
 }
 
 export default App;
