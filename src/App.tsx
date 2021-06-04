@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import logo from './assets/logo.png';
+import { useEffect } from 'react';
+
+import logo from '~/assets/logo.png';
 
 // you should feel free to reorganize the code however you see fit
 // including creating additional folders/files and organizing your
@@ -23,6 +24,7 @@ function App() {
       .then(json => json.results[0].members)
       .then(members => {
         // array of congressperson JSON objects
+        console.log(members);
       })
       .catch(() => {
         // catch errors

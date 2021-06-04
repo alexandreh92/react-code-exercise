@@ -10,9 +10,7 @@
   "extends": [
     "airbnb",
     "prettier",
-    "prettier/react",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "eslint:recommended",
     "plugin:react/recommended"
   ],
@@ -21,7 +19,8 @@
     "jsx-a11y",
     "react",
     "react-hooks",
-    "prettier"
+    "prettier",
+    "import-helpers"
   ],
   "rules": {
     "prettier/prettier": "error",
@@ -40,6 +39,12 @@
         "json": "never"
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/*.spec.js"] }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "import/prefer-default-export": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-unused-expressions": "off",
@@ -49,7 +54,7 @@
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
     "camelcase": "off",
-    "no-console": ["error", { "allow": ["tron"] }],
+    "no-console": ["warn", { "allow": ["tron"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/state-in-constructor": "off",
@@ -73,11 +78,23 @@
     "@typescript-eslint/member-delimiter-style": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-use-before-define": 0,
     "@typescript-eslint/no-unused-vars": [
       2,
       {
         "argsIgnorePattern": "^_"
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react$/",
+          "module",
+          ["parent", "sibling", "index"],
+          ["/^~/"]
+        ],
+        "alphabetize": { "order": "ignore", "ignoreCase": true }
       }
     ]
   },
