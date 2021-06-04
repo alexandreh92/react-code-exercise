@@ -1,11 +1,11 @@
 import ReduxToastr from 'react-redux-toastr';
 import { ConnectedRouter } from 'connected-react-router';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import { ThemeProvider } from 'styled-components';
 
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-import { ApplicationState } from './@types';
+// import { ApplicationState } from './@types';
 // import GlobalStyles from './styles/GlobalStyles';
 import Routes from './routes';
 

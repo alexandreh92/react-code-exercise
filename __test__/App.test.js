@@ -1,6 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "../src/App";
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
+
+import ReactDOM from 'react-dom';
+
+import App from '../src/App';
 
 // fetch is not supported in node, which is the context in which these jest tests are run
 // this means that the external API calls won't work. That's OK though, we probably don't
@@ -10,10 +14,10 @@ import App from "../src/App";
 // so that your components recieve the data they expect.
 beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       resolve({
         ok: true,
-        Id: "123",
+        Id: '123',
         json: () => {
           return {
             // YOUR MOCK RESPONSE HERE
@@ -24,8 +28,8 @@ beforeEach(() => {
   });
 });
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
+it('renders without crashing', () => {
+  const div = document.createElement('div');
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
