@@ -13,6 +13,10 @@ export const INITIAL_STATE: IState = {
 
 /* Reducers */
 
+const handleNothing = (state: IState): IState => ({ ...state });
+
 /* Reducers to types */
 
-export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {});
+export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
+  [Types.ANY_ACTION]: handleNothing,
+});

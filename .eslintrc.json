@@ -31,6 +31,9 @@
     "import-helpers"
   ],
   "rules": {
+    "react/react-in-jsx-scope": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
@@ -43,7 +46,6 @@
     "import/prefer-default-export": "off",
     "import/no-duplicates": "off",
     "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/extensions": [
       "error",

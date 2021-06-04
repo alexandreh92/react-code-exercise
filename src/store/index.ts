@@ -19,9 +19,15 @@ const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
-const store = createStore(persistReducers(rootReducer(history)), middlewares);
+const reducers = persistReducers(rootReducer(history));
+
+const store = createStore(reducers, middlewares);
 const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
 export { persistor, store };
+
+export type ConnectedMiddlewares = typeof middlewares;
+
+export type ConnectedReducers = typeof reducers;

@@ -4,6 +4,6 @@ import { someAction } from '.';
 
 import { MemberTypes } from '~/store/ducks/members/creators';
 
-const sagas = [takeLatest(MemberTypes.GET_SERVERS_SUCCESS, someAction)];
+const sagas = [takeLatest(MemberTypes.ANY_ACTION, someAction)];
 
 export default sagas;

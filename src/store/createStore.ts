@@ -1,15 +1,14 @@
-/* eslint-disable no-console */
-import { createStore, compose, applyMiddleware, Store } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 
-import { ApplicationState } from '~/store/ducks/types';
+import Reactotron from '~/config/reactotronConfig';
 
 export default (reducers: any, middlewares: any) => {
   const enhancer =
-    process.env.NODE_ENV === 'development'
-      ? compose(console.tron.createEnhancer(), applyMiddleware(...middlewares))
+    process.env.NODE_ENV === 'development' && Reactotron.createEnhancer
+      ? compose(Reactotron.createEnhancer(), applyMiddleware(...middlewares))
       : applyMiddleware(...middlewares);
 
-  const store: Store<ApplicationState> = createStore(reducers, enhancer);
+  const store = createStore(reducers, enhancer);
 
   return store;
 };
