@@ -1,48 +1,36 @@
-import { useEffect } from 'react';
+import ReduxToastr from 'react-redux-toastr';
+import { ConnectedRouter } from 'connected-react-router';
+import { useSelector } from 'react-redux';
+// import { ThemeProvider } from 'styled-components';
 
-import logo from '~/assets/logo.png';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-// you should feel free to reorganize the code however you see fit
-// including creating additional folders/files and organizing your
-// components however you would like.
+import { ApplicationState } from './@types';
+// import GlobalStyles from './styles/GlobalStyles';
+import Routes from './routes';
+
+import history from '~/services/history';
 
 function App() {
-  useEffect(() => {
-    const session = 115; // 115th congressional session
-    const chamber = 'senate'; // or 'house'
-
-    // sample API call
-    fetch(
-      `https://api.propublica.org/congress/v1/${session}/${chamber}/members.json`,
-      {
-        headers: new Headers({
-          'X-API-Key': 'd0ywBucVrXRlMQhENZxRtL3O7NPgtou2mwnLARTr',
-        }),
-      },
-    )
-      .then(res => res.json())
-      .then(json => json.results[0].members)
-      .then(members => {
-        // array of congressperson JSON objects
-        console.log(members);
-      })
-      .catch(() => {
-        // catch errors
-      });
-  });
+  // const { theme } = useSelector((state: ApplicationState) => state);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">React Programming Exercise</h1>
-      </header>
-      <section className="container">
-        {/*
-           Your app should render this part of the page.
-         */}
-      </section>
-    </div>
+    // <ThemeProvider theme={theme}>
+    <ConnectedRouter history={history}>
+      {/* <GlobalStyles /> */}
+      <ReduxToastr
+        timeOut={4000}
+        newestOnTop={false}
+        preventDuplicates
+        position="bottom-right"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+        progressBar
+        closeOnToastrClick
+      />
+      <Routes />
+    </ConnectedRouter>
+    // </ThemeProvider>
   );
 }
 
