@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "../src/App";
 
 // fetch is not supported in node, which is the context in which these jest tests are run
 // this means that the external API calls won't work. That's OK though, we probably don't
@@ -13,19 +13,19 @@ beforeEach(() => {
     return new Promise((resolve, reject) => {
       resolve({
         ok: true,
-        Id: '123',
+        Id: "123",
         json: () => {
           return {
             // YOUR MOCK RESPONSE HERE
-          }
-        }
+          };
+        },
       });
     });
   });
 });
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
+it("renders without crashing", () => {
+  const div = document.createElement("div");
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
