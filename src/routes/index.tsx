@@ -1,11 +1,13 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router';
 
-import Index from '~/pages/';
+import Welcomes from '~/pages/Welcomes';
+import Congressman from '~/pages/Congressman';
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Index} />
+      <Route exact path="/" component={Welcomes} />
+      <Route path="/congressman" component={Congressman} />
     </Switch>
   );
 };
