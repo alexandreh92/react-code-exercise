@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import logo from "./assets/logo.png";
+import React, { useEffect } from 'react';
+import logo from './assets/logo.png';
 
 // you should feel free to reorganize the code however you see fit
 // including creating additional folders/files and organizing your
@@ -8,20 +8,20 @@ import logo from "./assets/logo.png";
 function App() {
   useEffect(() => {
     const session = 115; // 115th congressional session
-    const chamber = "senate"; // or 'house'
+    const chamber = 'senate'; // or 'house'
 
     // sample API call
     fetch(
       `https://api.propublica.org/congress/v1/${session}/${chamber}/members.json`,
       {
         headers: new Headers({
-          "X-API-Key": "d0ywBucVrXRlMQhENZxRtL3O7NPgtou2mwnLARTr",
+          'X-API-Key': 'd0ywBucVrXRlMQhENZxRtL3O7NPgtou2mwnLARTr',
         }),
-      }
+      },
     )
-      .then((res) => res.json())
-      .then((json) => json.results[0].members)
-      .then((members) => {
+      .then(res => res.json())
+      .then(json => json.results[0].members)
+      .then(members => {
         // array of congressperson JSON objects
       })
       .catch(() => {
