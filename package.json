@@ -28,7 +28,8 @@
     "build": "craco build",
     "test": "craco test --env=jsdom",
     "eject": "react-scripts eject",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "lint": "yarn eslint '*/**/*.{js,ts,tsx}' && yarn prettier --check '*/**/*.{js,ts,tsx}'"
   },
   "browserslist": {
     "production": [
