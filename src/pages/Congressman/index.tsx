@@ -22,7 +22,11 @@ const Congressman = () => {
   const [currentQuery, setCurrentQuery] = useState<string | undefined>(search);
 
   const { currentData, firstIdx, firstPage, lastIdx, totalPages } =
-    usePagination({ data: members, currentPage });
+    usePagination({
+      data: members,
+      currentPage,
+      filters: { first_name: search },
+    });
 
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setCurrentQuery(e.currentTarget.value);
@@ -35,7 +39,7 @@ const Congressman = () => {
   return (
     <DefaultLayout>
       <SearchInput name="search" />
-
+      <div>{search}</div>
       <div>{currentPage}</div>
       <div>{totalPages}</div>
       <button
