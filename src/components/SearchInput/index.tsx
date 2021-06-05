@@ -1,5 +1,7 @@
 import { InputHTMLAttributes, useCallback, useEffect, useState } from 'react';
 
+import { Container } from './styles';
+
 import paramFactory from '~/utils/paramFactory';
 
 interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,11 +9,15 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-const SearchInput = ({ name, defaultValue }: SearchInputProps) => {
+const SearchInput = ({
+  name,
+  defaultValue = '',
+  className,
+  ...props
+}: SearchInputProps) => {
   const [value, setValue] = useState(defaultValue);
 
   useEffect(() => {
-    // add debouncer here
     paramFactory(name, value);
   }, [name, value]);
 
@@ -19,7 +25,11 @@ const SearchInput = ({ name, defaultValue }: SearchInputProps) => {
     setValue(e.currentTarget.value);
   }, []);
 
-  return <input value={value} onChange={handleOnChange} />;
+  return (
+    <Container className={className}>
+      <input {...props} value={value} onChange={handleOnChange} />
+    </Container>
+  );
 };
 
 export default SearchInput;

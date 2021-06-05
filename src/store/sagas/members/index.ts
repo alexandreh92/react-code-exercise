@@ -19,6 +19,6 @@ export function* getMembers({
 
     yield put(getMembersSuccess(members));
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

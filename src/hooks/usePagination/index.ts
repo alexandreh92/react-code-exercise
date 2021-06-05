@@ -1,4 +1,4 @@
-interface PaginationProps<T> {
+interface PaginationProps<T extends Record<string, any>> {
   currentPage?: number;
   perPage?: number;
   data?: T[];

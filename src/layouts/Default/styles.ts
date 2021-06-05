@@ -46,7 +46,7 @@ export const NavItem = styled(NavLink)`
 export const Menu = styled.div``;
 
 export const Content = styled.div`
-  padding: 0 20%;
+  padding: 3% 5%;
 
   background: ${({ theme }) => theme.colors.backgroundPrimary};
 
