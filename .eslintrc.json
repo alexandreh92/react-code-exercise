@@ -31,6 +31,8 @@
     "import-helpers"
   ],
   "rules": {
+    "react/require-default-props": "off",
+    "camelcase": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",

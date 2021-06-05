@@ -6,7 +6,8 @@ import { ITypes, ICreators } from './types';
 
 const { Types, Creators } = createActions<ITypes, ICreators>(
   {
-    anyAction: ['params'],
+    getMembersRequest: ['params'],
+    getMembersSuccess: ['members'],
   },
   { prefix: '@members/' },
 );

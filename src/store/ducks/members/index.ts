@@ -1,7 +1,7 @@
 import { createReducer } from 'reduxsauce';
 
 import Creators, { MemberTypes as Types } from './creators';
-import { IState, IActions } from './types';
+import { IState, IActions, ISetPropAction } from './types';
 
 export default Creators;
 
@@ -13,10 +13,13 @@ export const INITIAL_STATE: IState = {
 
 /* Reducers */
 
-const handleNothing = (state: IState): IState => ({ ...state });
+const handleGetMembers = (
+  state: IState,
+  { members }: ISetPropAction,
+): IState => ({ ...state, members });
 
 /* Reducers to types */
 
 export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
-  [Types.ANY_ACTION]: handleNothing,
+  [Types.GET_MEMBERS_SUCCESS]: handleGetMembers,
 });

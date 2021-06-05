@@ -49,6 +49,10 @@ export const Content = styled.div`
   padding: 0 20%;
 
   background: ${({ theme }) => theme.colors.backgroundPrimary};
+
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 `;
 
 export const Footer = styled.div`

@@ -7,18 +7,25 @@ import { Member } from '~/@types';
 
 export interface ISetPropAction extends AnyAction {
   members: Member[];
+  congress: string;
+  chamber: string;
 }
 
 /* Action Types */
 
 export interface ITypes extends DefaultActionTypes {
-  ANY_ACTION: 'anyAction';
+  GET_MEMBERS_REQUEST: 'getMembersRequest';
+  GET_MEMBERS_SUCCESS: 'getMembersSuccess';
 }
 
 /* Action Creators */
 
 export interface ICreators extends DefaultActionCreators {
-  anyAction: (params: any) => ISetPropAction;
+  getMembersRequest: (params: {
+    congress: string;
+    chamber: string;
+  }) => ISetPropAction;
+  getMembersSuccess: (members: Member[]) => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;
