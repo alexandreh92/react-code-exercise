@@ -7,7 +7,7 @@ export default (reducers: any) => {
     {
       key: 'lemoneyTest',
       storage,
-      whitelist: ['members'],
+      whitelist: [],
       stateReconciler: autoMergeLevel2,
     },
     reducers,

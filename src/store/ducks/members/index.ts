@@ -9,6 +9,10 @@ export default Creators;
 
 export const INITIAL_STATE: IState = {
   members: [],
+  currentFilter: {
+    chamber: '',
+    congress: '',
+  },
 };
 
 /* Reducers */
@@ -18,8 +22,20 @@ const handleGetMembers = (
   { members }: ISetPropAction,
 ): IState => ({ ...state, members });
 
+const handleSetFilters = (
+  state: IState,
+  { params }: ISetPropAction,
+): IState => ({
+  ...state,
+  currentFilter: {
+    chamber: params?.chamber ? params.chamber : state.currentFilter.chamber,
+    congress: params?.congress ? params.congress : state.currentFilter.congress,
+  },
+});
+
 /* Reducers to types */
 
 export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
+  [Types.GET_MEMBERS_REQUEST]: handleSetFilters,
   [Types.GET_MEMBERS_SUCCESS]: handleGetMembers,
 });

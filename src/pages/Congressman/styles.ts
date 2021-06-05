@@ -18,6 +18,8 @@ export const SidebarContainer = styled.aside`
 
   display: grid;
   grid-template-rows: 40px auto;
+
+  overflow: hidden;
 `;
 
 export const ContentContainer = styled.section`
@@ -34,6 +36,8 @@ export const Sidebar = styled.div`
   width: 190px;
 
   padding: 10px 15px;
+
+  overflow-y: auto;
 `;
 
 export const SidebarHeader = styled.header`
@@ -45,7 +49,7 @@ export const SidebarHeader = styled.header`
 export const Content = styled.div`
   overflow-y: auto;
 
-  & article:not(:last-child) {
+  & a:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.detail};
   }
 `;

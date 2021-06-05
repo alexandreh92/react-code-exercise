@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 interface QueryType {
-  congress?: number;
+  congress?: string;
   chamber?: string;
   search?: string;
   [key: string]: any;

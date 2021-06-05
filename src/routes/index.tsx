@@ -2,12 +2,14 @@ import { Switch, Route } from 'react-router-dom';
 
 import Welcomes from '~/pages/Welcomes';
 import Congressman from '~/pages/Congressman';
+import CongressmanShow from '~/pages/Congressman/Show';
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Welcomes} />
-      <Route path="/congressman" component={Congressman} />
+      <Route exact path="/congressman" component={Congressman} />
+      <Route exact path="/congressman/:id" component={CongressmanShow} />
     </Switch>
   );
 };

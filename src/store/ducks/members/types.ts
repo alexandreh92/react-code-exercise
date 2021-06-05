@@ -21,9 +21,10 @@ export interface ITypes extends DefaultActionTypes {
 /* Action Creators */
 
 export interface ICreators extends DefaultActionCreators {
-  getMembersRequest: (params: {
-    congress: string;
-    chamber: string;
+  getMembersRequest: (params?: {
+    congress?: string;
+    chamber?: string;
+    currenFilter?: CurrentFilterType;
   }) => ISetPropAction;
   getMembersSuccess: (members: Member[]) => ISetPropAction;
 }
@@ -32,6 +33,12 @@ export type IActions = ISetPropAction | AnyAction;
 
 /* Redux State */
 
+export type CurrentFilterType = {
+  chamber?: string;
+  congress?: string;
+};
+
 export interface IState {
   members: Member[];
+  currentFilter: CurrentFilterType;
 }

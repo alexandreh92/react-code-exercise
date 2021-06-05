@@ -21,7 +21,7 @@ const CongressmanItem = ({ member }: CongressmanItemProps) => {
     .join(' ');
 
   return (
-    <Container>
+    <Container to={`congressman/${member.id}`}>
       <Avatar
         src={`https://avatars.dicebear.com/api/avataaars/${member.twitter_account}.svg`}
         alt={fullName}

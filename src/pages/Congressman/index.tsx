@@ -12,6 +12,7 @@ import {
   ContentContainer,
   Header,
 } from './styles';
+import Filters from './Filters';
 
 import SearchInput from '~/components/SearchInput';
 import { useQuery, useStore } from '~/hooks';
@@ -23,8 +24,12 @@ import CongressmanItem from '~/components/CongressmanItem';
 const { getMembersRequest } = MemberActions;
 
 const Congressman = () => {
+  /* Hooks */
+
   const dispatch = useDispatch();
-  const { chamber, search, congress, page } = useQuery();
+
+  const { search, page, chamber, congress } = useQuery();
+
   const { members } = useStore(state => state.members);
 
   const [currentPage, setCurrentPage] = useState<number>(page || 1);
@@ -32,12 +37,19 @@ const Congressman = () => {
   const { currentData } = usePagination({
     data: members,
     currentPage,
-    filters: { first_name: search, congress, chamber },
+    filters: { first_name: search },
   });
 
+  /* Effects */
+
   useEffect(() => {
-    dispatch(getMembersRequest({ chamber: 'house', congress: '117' }));
-  }, [dispatch]);
+    dispatch(
+      getMembersRequest({
+        chamber: chamber || 'house',
+        congress: congress || '115',
+      }),
+    );
+  }, [dispatch, chamber, congress]);
 
   return (
     <DefaultLayout>
@@ -47,8 +59,7 @@ const Congressman = () => {
             <Header>Filters</Header>
           </SidebarHeader>
           <Sidebar>
-            <div>filter 1</div>
-            <div>filter 2</div>
+            <Filters />
           </Sidebar>
         </SidebarContainer>
         <ContentContainer>
@@ -79,17 +90,6 @@ const Congressman = () => {
             </button>
           </Content>
         </ContentContainer>
-        {/* <Sidebar>filters</Sidebar>
-        <Content>
-
-          <div>{search}</div>
-          <div>{currentPage}</div>
-          <div>{totalPages}</div>
-
-            next
-          </button>
-
-        </Content> */}
       </Container>
     </DefaultLayout>
   );
