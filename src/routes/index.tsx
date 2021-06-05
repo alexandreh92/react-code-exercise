@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router';
+import { Switch, Route } from 'react-router-dom';
 
 import Welcomes from '~/pages/Welcomes';
 import Congressman from '~/pages/Congressman';

@@ -31,6 +31,7 @@
     "import-helpers"
   ],
   "rules": {
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
     "react/react-in-jsx-scope": "off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
