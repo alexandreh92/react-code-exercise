@@ -43,7 +43,11 @@ export const NavItem = styled(NavLink)`
   }
 `;
 
-export const Menu = styled.div``;
+export const Menu = styled.div`
+  cursor: pointer;
+
+  user-select: none;
+`;
 
 export const Content = styled.div`
   padding: 3% 5%;

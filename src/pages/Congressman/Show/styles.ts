@@ -1,13 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import FilterGroup from '~/components/FilterGroup';
 
-export const Container = styled.div`
+type CustomContainer = {
+  loading?: boolean;
+};
+
+export const Container = styled.div<CustomContainer>`
   display: flex;
   flex-direction: column;
   flex: 1;
 
   overflow-y: auto;
+
+  ${({ loading }) =>
+    loading &&
+    css`
+      overflow: hidden;
+    `}
 
   position: relative;
 
@@ -105,3 +115,8 @@ export const RoleContainer = styled.div`
 `;
 
 export const Subgroup = styled.div``;
+
+export const MapContainer = styled.div`
+  width: 100%;
+  height: 300px;
+`;

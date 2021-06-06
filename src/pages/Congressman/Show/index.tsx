@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import GoogleMapReact, { Coords } from 'google-map-react';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -16,14 +17,17 @@ import {
   RoleGroup,
   RoleContainer,
   Subgroup,
+  MapContainer,
 } from './styles';
 import CommitteeDetail from './CommitteeDetail';
 
+import { fromAddress } from '~/services/geocode';
 import DefaultLayout from '~/layouts/Default';
 import api from '~/services/api';
 import { decrypt } from '~/utils/base64';
 import { MemberLookup } from '~/@types';
 import Loading from '~/components/Loading';
+import MapPin from '~/components/MapPin';
 
 type Params = {
   id: string;
@@ -35,12 +39,19 @@ const Show = () => {
 
   const { id, addressB64 } = useParams<Params>();
 
+  const location = {
+    lat: 38.8868888,
+    lng: -77.00635849999999,
+  };
+
   const [memberData, setMemberData] = useState<MemberLookup>(
     {} as MemberLookup,
   );
   const [loading, setLoading] = useState(true);
+  const [coords, setCoords] = useState<Coords>(location);
 
   const address = decrypt(addressB64);
+
   const fullName = [memberData.first_name, memberData.last_name]
     .filter(Boolean)
     .join(' ');
@@ -51,11 +62,13 @@ const Show = () => {
     try {
       const { data } = await api.get(`members/${id}`);
       setMemberData(data.results[0]);
+      const { lat, lng } = await fromAddress(address);
+      setCoords({ lat, lng });
       setLoading(false);
     } catch (error) {
       // console
     }
-  }, [id]);
+  }, [id, address]);
 
   /* Effects */
 
@@ -65,7 +78,7 @@ const Show = () => {
 
   return (
     <DefaultLayout>
-      <Container>
+      <Container loading={loading}>
         {loading ? (
           <Loading />
         ) : (
@@ -133,20 +146,37 @@ const Show = () => {
                         </RoleGroup>
                       ))}
                     </Subgroup>
-                    <Title>Subcommittees</Title>
-                    <Subgroup>
-                      {role.subcommittees.map(subcommittee => (
-                        <RoleGroup title={subcommittee.name}>
-                          <RoleContainer>
-                            <CommitteeDetail data={subcommittee} />
-                          </RoleContainer>
-                        </RoleGroup>
-                      ))}
-                    </Subgroup>
+                    {!!role.subcommittees.length && (
+                      <>
+                        <Title>Subcommittees</Title>
+                        <Subgroup>
+                          {role.subcommittees.map(subcommittee => (
+                            <RoleGroup title={subcommittee.name}>
+                              <RoleContainer>
+                                <CommitteeDetail data={subcommittee} />
+                              </RoleContainer>
+                            </RoleGroup>
+                          ))}
+                        </Subgroup>
+                      </>
+                    )}
                   </RoleGroup>
                 ))}
               </ContentLeft>
-              <ContentRight>Some Stuff</ContentRight>
+              <ContentRight>
+                <Title>Address</Title>
+                <MapContainer>
+                  <GoogleMapReact
+                    bootstrapURLKeys={{
+                      key: process.env.REACT_APP_GOOGLE_KEY || '',
+                    }}
+                    defaultCenter={coords}
+                    defaultZoom={11}
+                  >
+                    <MapPin lat={coords.lat} lng={coords.lng} />
+                  </GoogleMapReact>
+                </MapContainer>
+              </ContentRight>
             </Content>
           </>
         )}

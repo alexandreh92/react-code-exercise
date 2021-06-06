@@ -1,4 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useCallback } from 'react';
+
+import { Lightbulb, LightbulbFill } from '@styled-icons/bootstrap';
+import { useDispatch } from 'react-redux';
 
 import {
   Container,
@@ -11,7 +14,21 @@ import {
   NavItem,
 } from './styles';
 
+import ThemeActions from '~/store/ducks/theme';
+import { useStore } from '~/hooks';
+import { darkTheme, lightTheme } from '~/styles/theme';
+
+const { changeTheme } = ThemeActions;
+
 const Default = ({ children }: PropsWithChildren<any>) => {
+  const dispatch = useDispatch();
+  const { mode } = useStore(state => state.theme);
+
+  /* Callbacks */
+  const handleOnThemeChange = useCallback(() => {
+    dispatch(changeTheme(mode === 'dark' ? lightTheme : darkTheme));
+  }, [dispatch, mode]);
+
   return (
     <Container>
       <Header>
@@ -24,7 +41,13 @@ const Default = ({ children }: PropsWithChildren<any>) => {
             Find
           </NavItem>
         </Nav>
-        <Menu>Menu</Menu>
+        <Menu onClick={handleOnThemeChange}>
+          {mode === 'dark' ? (
+            <Lightbulb size="25" />
+          ) : (
+            <LightbulbFill size="25" />
+          )}
+        </Menu>
       </Header>
       <Content>{children}</Content>
       <Footer>
