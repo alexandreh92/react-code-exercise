@@ -10,6 +10,7 @@ import {
 
 import Progress from '~/components/Progress';
 import { Member } from '~/@types';
+import { encrypt } from '~/utils/base64';
 
 interface CongressmanItemProps {
   member: Member;
@@ -20,8 +21,10 @@ const CongressmanItem = ({ member }: CongressmanItemProps) => {
     .filter(Boolean)
     .join(' ');
 
+  const fullAddress = encrypt(`${member.office}, ${member.state}`);
+
   return (
-    <Container to={`congressman/${member.id}`}>
+    <Container to={`congressman/${member.id}/${fullAddress}`}>
       <Avatar
         src={`https://avatars.dicebear.com/api/avataaars/${member.twitter_account}.svg`}
         alt={fullName}
