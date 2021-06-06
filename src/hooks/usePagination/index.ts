@@ -19,6 +19,9 @@ const usePagination = <T extends Record<string, any>>({
 
   const filteredData = data.filter(record => {
     return Object.keys(filters).every(filter => {
+      if (filter === ('votes_with_party_pct' || 'votes_against_party_pct')) {
+        return filters[filter] ? filters[filter] >= record[filter] : true;
+      }
       return filters[filter] ? filters[filter] === record[filter] : true;
     });
   });

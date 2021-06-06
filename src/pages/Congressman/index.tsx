@@ -31,38 +31,45 @@ const Congressman = () => {
 
   const dispatch = useDispatch();
 
-  const { search, page, chamber, congress } = useQuery();
+  const {
+    search,
+    page,
+    chamber,
+    congress,
+    votes_with_party_pct,
+    votes_against_party_pct,
+  } = useQuery();
 
   const { members, loading } = useStore(state => state.members);
 
-  const [currentPage, setCurrentPage] = useState<number>(page || 1);
+  const [currentPage, setCurrentPage] = useState<number>(
+    parseInt(page, 10) || 1,
+  );
 
   const { currentData, totalPages } = usePagination({
     data: members,
     currentPage,
-    filters: { first_name: search },
+    filters: {
+      first_name: search,
+      votes_with_party_pct: parseInt(votes_with_party_pct, 10),
+      votes_against_party_pct: parseInt(votes_against_party_pct, 10),
+    },
   });
 
   /* Callbacks */
 
   const handlePreviousPage = () => {
-    setCurrentPage(oldState => {
-      const newState = oldState - 1;
+    const newPage = currentPage - 1;
 
-      paramFactory('page', newState.toString());
-
-      return newState;
-    });
+    setCurrentPage(newPage);
+    paramFactory('page', newPage.toString());
   };
 
   const handleNextPage = () => {
-    setCurrentPage(oldState => {
-      const newState = oldState + 1;
+    const newPage = currentPage + 1;
 
-      paramFactory('page', newState.toString());
-
-      return newState;
-    });
+    setCurrentPage(newPage);
+    paramFactory('page', newPage.toString());
   };
 
   /* Effects */
