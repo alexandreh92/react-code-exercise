@@ -8,6 +8,7 @@ const { Types, Creators } = createActions<ITypes, ICreators>(
   {
     getMembersRequest: ['params'],
     getMembersSuccess: ['members'],
+    setLoading: ['loading'],
   },
   { prefix: '@members/' },
 );

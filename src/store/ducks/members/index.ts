@@ -13,6 +13,7 @@ export const INITIAL_STATE: IState = {
     chamber: '',
     congress: '',
   },
+  loading: false,
 };
 
 /* Reducers */
@@ -33,9 +34,15 @@ const handleSetFilters = (
   },
 });
 
+const handleSetLoading = (
+  state: IState,
+  { loading }: ISetPropAction,
+): IState => ({ ...state, loading });
+
 /* Reducers to types */
 
 export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
   [Types.GET_MEMBERS_REQUEST]: handleSetFilters,
   [Types.GET_MEMBERS_SUCCESS]: handleGetMembers,
+  [Types.SET_LOADING]: handleSetLoading,
 });

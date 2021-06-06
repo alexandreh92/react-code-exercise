@@ -12,6 +12,7 @@ export const Container = styled(Link)`
 
 export const Avatar = styled.img`
   height: 40px;
+  width: 40px;
   border-radius: 40px;
 
   background: ${({ theme }) => theme.colors.backgroundContrast};

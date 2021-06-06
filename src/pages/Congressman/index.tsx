@@ -20,6 +20,7 @@ import usePagination from '~/hooks/usePagination';
 import DefaultLayout from '~/layouts/Default';
 import MemberActions from '~/store/ducks/members';
 import CongressmanItem from '~/components/CongressmanItem';
+import Loading from '~/components/Loading';
 
 const { getMembersRequest } = MemberActions;
 
@@ -30,7 +31,7 @@ const Congressman = () => {
 
   const { search, page, chamber, congress } = useQuery();
 
-  const { members } = useStore(state => state.members);
+  const { members, loading } = useStore(state => state.members);
 
   const [currentPage, setCurrentPage] = useState<number>(page || 1);
 
@@ -72,22 +73,27 @@ const Congressman = () => {
             />
           </ContentHeader>
           <Content>
-            {currentData.map(member => (
-              <CongressmanItem key={member.id} member={member} />
-            ))}
-
-            <button
-              type="button"
-              onClick={() => setCurrentPage(oldState => oldState - 1)}
-            >
-              previous
-            </button>
-            <button
-              type="button"
-              onClick={() => setCurrentPage(oldState => oldState + 1)}
-            >
-              next
-            </button>
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                {currentData.map(member => (
+                  <CongressmanItem key={member.id} member={member} />
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(oldState => oldState - 1)}
+                >
+                  previous
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(oldState => oldState + 1)}
+                >
+                  next
+                </button>
+              </>
+            )}
           </Content>
         </ContentContainer>
       </Container>

@@ -9,6 +9,7 @@ export interface ISetPropAction extends AnyAction {
   members: Member[];
   congress: string;
   chamber: string;
+  loading: boolean;
 }
 
 /* Action Types */
@@ -16,6 +17,7 @@ export interface ISetPropAction extends AnyAction {
 export interface ITypes extends DefaultActionTypes {
   GET_MEMBERS_REQUEST: 'getMembersRequest';
   GET_MEMBERS_SUCCESS: 'getMembersSuccess';
+  SET_LOADING: 'setLoading';
 }
 
 /* Action Creators */
@@ -27,6 +29,7 @@ export interface ICreators extends DefaultActionCreators {
     currenFilter?: CurrentFilterType;
   }) => ISetPropAction;
   getMembersSuccess: (members: Member[]) => ISetPropAction;
+  setLoading: (loading: boolean) => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;
@@ -41,4 +44,5 @@ export type CurrentFilterType = {
 export interface IState {
   members: Member[];
   currentFilter: CurrentFilterType;
+  loading: boolean;
 }

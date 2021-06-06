@@ -34,7 +34,7 @@ const Filters = () => {
           label="house"
           name="chamber"
           value="house"
-          defaultChecked={chamber === 'house'}
+          defaultChecked={(chamber || 'house') === 'house'}
           onClick={handleOnClick}
         />
         <RadioButton
@@ -52,7 +52,7 @@ const Filters = () => {
             name="congress"
             label={value.toString()}
             value={value}
-            defaultChecked={congress === value.toString()}
+            defaultChecked={(congress || '115') === value.toString()}
             onClick={handleOnClick}
           />
         ))}

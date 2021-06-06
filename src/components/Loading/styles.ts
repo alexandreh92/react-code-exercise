@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: absolute;
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  margin: 3px 0;
-
-  & > label {
-    margin-left: 5px;
-    font-size: 11px;
-  }
+  width: 100%;
+  height: 100%;
 `;

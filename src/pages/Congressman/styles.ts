@@ -52,6 +52,8 @@ export const Content = styled.div`
   & a:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.detail};
   }
+
+  position: relative;
 `;
 
 export const ContentHeader = styled.header`
