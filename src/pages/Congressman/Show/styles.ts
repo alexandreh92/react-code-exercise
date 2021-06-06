@@ -76,9 +76,13 @@ export const ContentRight = styled.div`
   flex: 1;
 `;
 
-export const Content = styled.div`
+export const Content = styled.section`
   display: flex;
   flex: 1;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const Party = styled.h2``;
@@ -105,6 +109,10 @@ export const RoleContainer = styled.div`
   grid-auto-flow: column;
 
   & h4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     font-size: 11px;
     font-weight: bold;
 
@@ -112,9 +120,13 @@ export const RoleContainer = styled.div`
       font-weight: normal;
     }
   }
+
+  @media (max-width: 980px) {
+    grid-template-rows: repeat(6, 20px);
+  }
 `;
 
-export const Subgroup = styled.div``;
+export const Subgroup = styled.article``;
 
 export const MapContainer = styled.div`
   width: 100%;

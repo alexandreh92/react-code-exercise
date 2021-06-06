@@ -10,6 +10,30 @@ export const Container = styled.div`
   grid-gap: 0 20px;
 
   height: 100%;
+
+  box-sizing: border-box;
+  @media (max-width: 550px) {
+    display: block;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 50px;
+      width: 100%;
+    }
+
+    & > aside {
+      overflow: visible;
+
+      & > div {
+        width: 100%;
+      }
+    }
+
+    & > section {
+      overflow: visible;
+    }
+  }
 `;
 
 export const SidebarContainer = styled.aside`
@@ -58,6 +82,10 @@ export const Content = styled.div`
   }
 
   position: relative;
+
+  @media (max-width: 550px) {
+    min-height: 300px;
+  }
 `;
 
 export const ContentHeader = styled.header`

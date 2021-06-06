@@ -8,6 +8,10 @@ export const Container = styled(Link)`
   margin: 0 20px;
 
   padding: 20px 0;
+
+  @media (max-width: 830px) {
+    flex-direction: column;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -22,6 +26,18 @@ export const Avatar = styled.img`
 export const Content = styled.div`
   margin-left: 20px;
   flex: 1;
+
+  @media (max-width: 830px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+
+    & > h3 {
+      margin: 20px 0;
+    }
+  }
 `;
 
 export const Name = styled.h3`
@@ -36,6 +52,10 @@ export const MetaWrapper = styled.div`
   flex: 1;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 720px) {
+    flex-direction: column;
+  }
 `;
 
 export const Meta = styled.header`
@@ -48,13 +68,33 @@ export const Meta = styled.header`
   & > h4 {
     font-size: 11px;
     font-weight: bold;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     & > span {
       font-weight: normal;
     }
+  }
+
+  @media (max-width: 830px) {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 720px) {
+    margin: 0;
   }
 `;
 
 export const Bars = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 830px) {
+    margin-left: 10px;
+  }
+
+  @media (max-width: 720px) {
+    margin: 10px 0;
+  }
 `;

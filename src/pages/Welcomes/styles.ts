@@ -59,6 +59,10 @@ export const Content = styled.section`
       }
     }
   }
+
+  @media (max-width: 680px) {
+    width: 80%;
+  }
 `;
 
 export const Button = styled(Link)`

@@ -14,6 +14,8 @@ import {
   NavItem,
 } from './styles';
 
+import LogoSvg from '~/assets/logo_final.svg';
+import LogoSvgDark from '~/assets/logo_final_dark.svg';
 import ThemeActions from '~/store/ducks/theme';
 import { useStore } from '~/hooks';
 import { darkTheme, lightTheme } from '~/styles/theme';
@@ -32,7 +34,7 @@ const Default = ({ children }: PropsWithChildren<any>) => {
   return (
     <Container>
       <Header>
-        <Logo>Logo</Logo>
+        {mode === 'dark' ? <Logo src={LogoSvgDark} /> : <Logo src={LogoSvg} />}
         <Nav>
           <NavItem exact to="/">
             Home

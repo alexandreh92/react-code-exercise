@@ -19,14 +19,17 @@ export const Header = styled.div`
 
   background: ${({ theme }) => theme.colors.backgroundSecondary};
 
-  padding: 0 20%;
+  padding: 0 5%;
 
   box-shadow: rgb(0 0 0 / 10%) 1px 1px 12px 0px;
 
   z-index: 99;
 `;
 
-export const Logo = styled.div``;
+export const Logo = styled.img`
+  height: 40px;
+  width: 40px;
+`;
 
 export const Nav = styled.nav``;
 
@@ -69,8 +72,6 @@ export const Footer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 0 20%;
 
   font-size: 12px;
   font-weight: bold;
