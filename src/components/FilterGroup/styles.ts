@@ -7,16 +7,22 @@ type ContainerType = {
 export const Container = styled.div<ContainerType>`
   padding-bottom: 5px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.tableBorders};
 
   display: flex;
   flex-direction: column;
+
+  & > section {
+    max-height: 2000px;
+
+    transition: max-height 100ms ease-in;
+  }
 
   ${({ active }) =>
     !active &&
     css`
       & > section {
-        height: 0;
+        max-height: 0;
         overflow: hidden;
       }
     `};

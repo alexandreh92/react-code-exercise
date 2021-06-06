@@ -3,6 +3,7 @@ export const lightTheme = {
   colors: {
     backgroundPrimary: '#f4f4f4',
     backgroundSecondary: '#fff',
+    backgroundTertiary: '#3A3A3A',
     backgroundContrast: '#1a1a1a',
     tableBorders: '#ddd',
     black: '#3f3f3f',
@@ -17,8 +18,9 @@ export const lightTheme = {
 export const darkTheme = {
   mode: 'dark',
   colors: {
-    backgroundSecondary: '#2a2a2a',
     backgroundPrimary: '#1a1a1a',
+    backgroundSecondary: '#2a2a2a',
+    backgroundTertiary: '#3A3A3A',
     backgroundContrast: '#ebebeb',
     tableBorders: '#787878',
     black: '#ebebeb',

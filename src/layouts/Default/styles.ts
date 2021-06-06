@@ -6,12 +6,18 @@ export const Container = styled.div`
   display: grid;
   grid-template-rows: 80px 1fr 80px;
   grid-template-columns: 1fr;
+
+  transition: color 300ms ease !important;
+
+  color: ${({ theme }) => theme.colors.backgroundContrast};
 `;
 
 export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  background: ${({ theme }) => theme.colors.backgroundSecondary};
 
   padding: 0 20%;
 
