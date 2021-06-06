@@ -9,6 +9,7 @@ interface FilterGroupProps {
 const FilterGroup = ({
   title,
   children,
+  ...props
 }: PropsWithChildren<FilterGroupProps>) => {
   const [active, setActive] = useState(false);
 
@@ -17,7 +18,7 @@ const FilterGroup = ({
   };
 
   return (
-    <Container active={active}>
+    <Container {...props} active={active}>
       <Title onClick={handleOnClick}>{title}</Title>
       <Content>{children}</Content>
     </Container>
