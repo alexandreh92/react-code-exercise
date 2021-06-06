@@ -1,0 +1,22 @@
+module.exports = {
+  preset: 'ts-jest',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+  setupFilesAfterEnv: [
+    '@testing-library/react/cleanup-after-each',
+    '@testing-library/jest-dom/extend-expect',
+  ],
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/coverage/**',
+    '!**/node_modules/**',
+    '!**/babel.config.js',
+    '!**/jest.setup.js',
+    '!src/types/**',
+  ],
+  coverageDirectory: '__tests__/coverage',
+  moduleNameMapper: {
+    '^~/(.*)': '<rootDir>/src/$1',
+  },
+
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+};
