@@ -136,16 +136,20 @@ const Show = () => {
                         End Date: <span>{role.end_date}</span>
                       </h4>
                     </RoleContainer>
-                    <Title>Committees</Title>
-                    <Subgroup>
-                      {role.committees.map(committee => (
-                        <RoleGroup title={committee.name}>
-                          <RoleContainer>
-                            <CommitteeDetail data={committee} />
-                          </RoleContainer>
-                        </RoleGroup>
-                      ))}
-                    </Subgroup>
+                    {!!role.committees.length && (
+                      <>
+                        <Title>Committees</Title>
+                        <Subgroup>
+                          {role.committees.map(committee => (
+                            <RoleGroup title={committee.name}>
+                              <RoleContainer>
+                                <CommitteeDetail data={committee} />
+                              </RoleContainer>
+                            </RoleGroup>
+                          ))}
+                        </Subgroup>
+                      </>
+                    )}
                     {!!role.subcommittees.length && (
                       <>
                         <Title>Subcommittees</Title>
