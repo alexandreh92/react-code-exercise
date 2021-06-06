@@ -28,6 +28,12 @@ export const Title = styled.div`
   cursor: pointer;
 
   height: 100%;
+
+  user-select: none;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.detail};
+  }
 `;
 
 export const Content = styled.section`

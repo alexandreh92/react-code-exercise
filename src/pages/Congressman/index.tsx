@@ -21,6 +21,8 @@ import DefaultLayout from '~/layouts/Default';
 import MemberActions from '~/store/ducks/members';
 import CongressmanItem from '~/components/CongressmanItem';
 import Loading from '~/components/Loading';
+import Pagination from '~/components/Pagination';
+import paramFactory from '~/utils/paramFactory';
 
 const { getMembersRequest } = MemberActions;
 
@@ -35,11 +37,33 @@ const Congressman = () => {
 
   const [currentPage, setCurrentPage] = useState<number>(page || 1);
 
-  const { currentData } = usePagination({
+  const { currentData, totalPages } = usePagination({
     data: members,
     currentPage,
     filters: { first_name: search },
   });
+
+  /* Callbacks */
+
+  const handlePreviousPage = () => {
+    setCurrentPage(oldState => {
+      const newState = oldState - 1;
+
+      paramFactory('page', newState.toString());
+
+      return newState;
+    });
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(oldState => {
+      const newState = oldState + 1;
+
+      paramFactory('page', newState.toString());
+
+      return newState;
+    });
+  };
 
   /* Effects */
 
@@ -80,18 +104,12 @@ const Congressman = () => {
                 {currentData.map(member => (
                   <CongressmanItem key={member.id} member={member} />
                 ))}
-                <button
-                  type="button"
-                  onClick={() => setCurrentPage(oldState => oldState - 1)}
-                >
-                  previous
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCurrentPage(oldState => oldState + 1)}
-                >
-                  next
-                </button>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onNextPress={handleNextPage}
+                  onPreviousPress={handlePreviousPage}
+                />
               </>
             )}
           </Content>
