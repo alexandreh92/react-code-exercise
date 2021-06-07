@@ -12,7 +12,7 @@ const useQuery = () => {
 
   const queryParams: QueryType = {};
 
-  const searchParams = search.replaceAll('?', '').split('&');
+  const searchParams = search.replace('?', '').split('&');
   searchParams.forEach(param => {
     const values = param.split('=');
 

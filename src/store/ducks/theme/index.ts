@@ -1,6 +1,6 @@
 import { createReducer } from 'reduxsauce';
 
-import { IState, IActions, ISetPropAction } from './types';
+import { IState, IActions } from './types';
 import Creators, { ThemeTypes as Types } from './creators';
 
 import { lightTheme } from '~/styles/theme';
@@ -15,7 +15,7 @@ export const INITIAL_STATE: IState = lightTheme;
 
 export const handleChangeTheme = (
   state: IState,
-  { theme }: ISetPropAction,
+  { theme }: { theme: IState },
 ): IState => ({ ...state, ...theme });
 
 /* Reducers to types */

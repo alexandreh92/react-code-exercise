@@ -13,7 +13,6 @@ const usePagination = <T extends Record<string, any>>({
   data = [],
   filters = {},
 }: PaginationProps<T>) => {
-  const firstPage = 1;
   const lastIdx = currentPage * perPage;
   const firstIdx = lastIdx - perPage;
 
@@ -30,7 +29,7 @@ const usePagination = <T extends Record<string, any>>({
 
   const totalPages = Math.ceil(filteredData.length / perPage);
 
-  return { currentData, lastIdx, firstIdx, totalPages, firstPage };
+  return { currentData, totalPages };
 };
 
 export default usePagination;

@@ -1,7 +1,7 @@
 import { createReducer } from 'reduxsauce';
 
 import Creators, { MemberTypes as Types } from './creators';
-import { IState, IActions, ISetPropAction } from './types';
+import { IState, IActions, CurrentFilterType } from './types';
 
 export default Creators;
 
@@ -18,14 +18,14 @@ export const INITIAL_STATE: IState = {
 
 /* Reducers */
 
-const handleGetMembers = (
+export const handleGetMembers = (
   state: IState,
-  { members }: ISetPropAction,
+  { members }: Pick<IState, 'members'>,
 ): IState => ({ ...state, members });
 
-const handleSetFilters = (
+export const handleSetFilters = (
   state: IState,
-  { params }: ISetPropAction,
+  { params }: { params: CurrentFilterType },
 ): IState => ({
   ...state,
   currentFilter: {
@@ -34,9 +34,9 @@ const handleSetFilters = (
   },
 });
 
-const handleSetLoading = (
+export const handleSetLoading = (
   state: IState,
-  { loading }: ISetPropAction,
+  { loading }: Pick<IState, 'loading'>,
 ): IState => ({ ...state, loading });
 
 /* Reducers to types */

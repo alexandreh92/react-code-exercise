@@ -16,6 +16,7 @@ const Slider = ({
   return (
     <Container>
       <Input
+        data-testid="range-input"
         {...props}
         type="range"
         min={min}
@@ -23,7 +24,7 @@ const Slider = ({
         step={step}
         value={value}
       />
-      <Label>{value}</Label>
+      <Label data-testid="range-label">{value}</Label>
     </Container>
   );
 };

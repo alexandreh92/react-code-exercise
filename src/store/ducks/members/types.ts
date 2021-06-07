@@ -4,9 +4,7 @@ import { AnyAction } from 'redux';
 import { Member } from '~/@types';
 
 /* Payloads */
-
 export interface ISetPropAction extends AnyAction {
-  members: Member[];
   congress: string;
   chamber: string;
   loading: boolean;

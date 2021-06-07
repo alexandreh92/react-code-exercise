@@ -1,13 +1,16 @@
-import { call, put, select } from 'redux-saga/effects';
-import { SagaIterator } from 'redux-saga';
+import { call, put, select, StrictEffect } from 'redux-saga/effects';
 
-import { ISetPropAction, IState } from '~/store/ducks/members/types';
+import { IState, CurrentFilterType } from '~/store/ducks/members/types';
 import api from '~/services/api';
 import MembersActions from '~/store/ducks/members';
 
 const { getMembersSuccess, setLoading } = MembersActions;
 
-export function* getMembers({ params }: ISetPropAction): SagaIterator {
+export function* getMembers({
+  params,
+}: {
+  params: CurrentFilterType;
+}): Generator<StrictEffect, void, any> {
   try {
     yield put(setLoading(true));
     const { currentFilter }: IState = yield select(state => state.members);
@@ -28,7 +31,5 @@ export function* getMembers({ params }: ISetPropAction): SagaIterator {
     yield put(setLoading(false));
   } catch (error) {
     yield put(setLoading(false));
-
-    // console.log
   }
 }

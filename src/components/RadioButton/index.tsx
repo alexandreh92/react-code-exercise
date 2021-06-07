@@ -15,8 +15,17 @@ const RadioButton = ({
 }: RadioButtonProps) => {
   return (
     <Container>
-      <input {...props} type="radio" id={id} name={name} value={value} />
-      <label htmlFor={id}>{label}</label>
+      <input
+        data-testid="radio-input"
+        {...props}
+        type="radio"
+        id={id}
+        name={name}
+        value={value}
+      />
+      <label data-testid="radio-label" htmlFor={id}>
+        {label}
+      </label>
     </Container>
   );
 };
