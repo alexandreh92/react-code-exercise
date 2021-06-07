@@ -1,4 +1,5 @@
 module.exports = {
+  roots: ['<rootDir>/__test__'],
   preset: 'ts-jest',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
   setupFilesAfterEnv: [
@@ -16,7 +17,9 @@ module.exports = {
   coverageDirectory: '__tests__/coverage',
   moduleNameMapper: {
     '^~/(.*)': '<rootDir>/src/$1',
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.ts',
   },
 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  testEnvironment: 'jsdom',
 };

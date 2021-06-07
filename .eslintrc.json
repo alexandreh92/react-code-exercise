@@ -47,7 +47,16 @@
         }
       }
     ],
-
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.tsx",
+          "**/*.test.ts",
+          "__test__/**/*.tsx"
+        ]
+      }
+    ],
     "react/require-default-props": "off",
     "camelcase": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],

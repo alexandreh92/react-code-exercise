@@ -10,7 +10,13 @@ const Loading = () => {
 
   return (
     <Container>
-      <Loader type="Oval" color={detail} height={30} width={30} />
+      <Loader
+        data-testid="loader"
+        type="Oval"
+        color={detail}
+        height={30}
+        width={30}
+      />
     </Container>
   );
 };

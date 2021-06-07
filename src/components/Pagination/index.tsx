@@ -19,10 +19,18 @@ const Pagination = ({
 }: PaginationProps) => {
   return (
     <Container>
-      <Button disabled={currentPage <= 1} onClick={onPreviousPress}>
+      <Button
+        data-testid="prevbutton"
+        disabled={currentPage <= 1}
+        onClick={onPreviousPress}
+      >
         {previousText}
       </Button>
-      <Button disabled={currentPage >= totalPages} onClick={onNextPress}>
+      <Button
+        data-testid="nextbutton"
+        disabled={currentPage >= totalPages}
+        onClick={onNextPress}
+      >
         {nextText}
       </Button>
     </Container>
