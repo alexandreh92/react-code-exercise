@@ -15,7 +15,13 @@ describe('Members Saga', () => {
     it('triggers loading state', async () => {
       const dispatch = jest.fn();
 
-      const params = { params: { chamber: 'house', congress: '116' } };
+      const params = {
+        params: {
+          chamber: 'house',
+          congress: '116',
+        },
+        type: 'GET_MEMBERS_REQUEST',
+      };
 
       apiMock.onGet().reply(200, { results: [{ members: [mockMember] }] });
 
@@ -27,7 +33,13 @@ describe('Members Saga', () => {
     it('should be able to fetch members', async () => {
       const dispatch = jest.fn();
 
-      const params = { params: { chamber: 'house', congress: '116' } };
+      const params = {
+        params: {
+          chamber: 'house',
+          congress: '116',
+        },
+        type: 'GET_MEMBERS_REQUEST',
+      };
       const state = { members: { currentFilter: {} } };
 
       apiMock.onGet('116').reply(200, { results: [{ members: [mockMember] }] });

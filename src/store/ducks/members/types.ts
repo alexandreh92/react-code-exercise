@@ -5,9 +5,9 @@ import { Member } from '~/@types';
 
 /* Payloads */
 export interface ISetPropAction extends AnyAction {
-  congress: string;
-  chamber: string;
-  loading: boolean;
+  congress?: string;
+  chamber?: string;
+  loading?: boolean;
 }
 
 /* Action Types */

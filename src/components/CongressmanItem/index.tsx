@@ -38,7 +38,7 @@ const CongressmanItem = ({ member }: CongressmanItemProps) => {
         <MetaWrapper>
           <Meta>
             <h4>
-              Title: <span data-testid="title">{member.title}</span>
+              Title: <span data-testid="meta-title">{member.title}</span>
             </h4>
             <h4>
               Party:{' '}

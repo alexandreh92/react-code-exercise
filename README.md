@@ -22,8 +22,8 @@
 </h4>
 
 <p align="center">
-  <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">License</a>
 </p>
 
 ![App Screenshot](https://res.cloudinary.com/dzsoc0i6y/image/upload/v1623018136/Screen_Shot_2021-06-06_at_19.21.42_dpmpim.png)

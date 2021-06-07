@@ -19,7 +19,7 @@ describe('FilterGroup', () => {
 
   it('successfull render title', () => {
     const { getByTestId } = render(<CongressmanItem member={memberMock} />);
-    const title = getByTestId('title');
+    const title = getByTestId('meta-title');
 
     expect(title).toHaveTextContent(memberMock.title);
   });

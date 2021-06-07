@@ -14,12 +14,10 @@ module.exports = {
     '!**/jest.setup.js',
     '!src/types/**',
   ],
-  coverageDirectory: '__tests__/coverage',
   moduleNameMapper: {
     '^~/(.*)': '<rootDir>/src/$1',
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.ts',
   },
-
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testEnvironment: 'jsdom',
 };

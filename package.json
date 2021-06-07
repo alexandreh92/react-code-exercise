@@ -73,6 +73,7 @@
     "@types/react-redux-toastr": "^7.6.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/redux-persist": "^4.3.1",
+    "@types/redux-saga": "^0.10.5",
     "@types/styled-components": "^5.1.9",
     "@types/testing-library__jest-dom": "^5.9.5",
     "axios-mock-adapter": "^1.19.0",
