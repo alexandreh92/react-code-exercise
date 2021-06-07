@@ -10,8 +10,8 @@ const Progress = ({
 }: ProgressHTMLAttributes<HTMLProgressElement>) => {
   return (
     <Container>
-      <Title>{title}</Title>
-      <PBar {...props} value={value} max={max} />
+      <Title data-testid="title">{title}</Title>
+      <PBar data-testid="progress" {...props} value={value} max={max} />
     </Container>
   );
 };

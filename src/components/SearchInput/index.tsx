@@ -27,7 +27,12 @@ const SearchInput = ({
 
   return (
     <Container className={className}>
-      <input {...props} value={value} onChange={handleOnChange} />
+      <input
+        data-testid="search-input"
+        {...props}
+        value={value}
+        onChange={handleOnChange}
+      />
     </Container>
   );
 };
